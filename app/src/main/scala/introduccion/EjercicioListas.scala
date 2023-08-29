@@ -12,9 +12,22 @@ class EjercicioListas {
   * @throws IllegalArgumentException si n es negativo
   */
   def repetirListas(lista: List[Int], n: Int): List[List[Int]] = {
-    var listaRepetida : List[List[Int]] = List()
-    //Complete el código
-    throw new UnsupportedOperationException("No implementado aún")
+    var listaRepetida: List[List[Int]] = List()
+    if(n>0){
+      var listaInterna = List()
+      for (elm <- lista) {
+        var listaInterna = List[Int] ()= List()
+        for (i <- 1 to n) {
+          listaInterna = listaInterna :+ elm
+        }
+        listaRepetida = listaRepetida :+ listaInterna
+      }
+      return listaRepetida
+    }else{
+      throw new IllegalArgumentException("n debe ser positivo")
+    }
+
+
   }
   /*
   * Punto 3: Filtrar listas
@@ -25,10 +38,13 @@ class EjercicioListas {
   * @throws IllegalArgumentException si el criterio no es uno de los valores válidos
   */
 
-  def filtrarListas(criterioIn: String, n: Int, lista: List[Int]) : List[Int] = {
-    var criterio : String = criterioIn.toLowerCase()
-    var listaFiltrada : List[Int] = List()
-    //Complete el código
-    throw new UnsupportedOperationException("No implementado aún")
+  def filtrarListas(criterioIn: String, n: Int, lista: List[Int]): List[Int] = {
+    var criterio: String = criterioIn.toLowerCase()
+    var listaFiltrada: List[Int] = List()
+    var funcion: Any = (x: Int, Y: Int) => x > Y
+    if (criterio == "mayor") {
+      funcion = (x: Int, Y: Int) => x > Y
+    }else if (criterio == "mayorigual") {
+      funcion = (x: Int, Y: Int) => x >= Y
+    }
   }
-}
