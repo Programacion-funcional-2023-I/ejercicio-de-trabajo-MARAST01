@@ -24,7 +24,7 @@ class EjercicioListas {
       }
       return listaRepetida
     } else {
-      throw new IllegalArgumentException("n debe ser positivo")
+      throw new IllegalArgumentException("n debe ser positivoo")
     }
 
 
