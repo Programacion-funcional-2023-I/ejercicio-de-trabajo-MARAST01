@@ -13,17 +13,17 @@ class EjercicioListas {
   */
   def repetirListas(lista: List[Int], n: Int): List[List[Int]] = {
     var listaRepetida: List[List[Int]] = List()
-    if(n>0){
+    if (n >=0) {
       var listaInterna = List()
       for (elm <- lista) {
-        var listaInterna = List[Int] ()= List()
+        var listaInterna: List[Int] = List()
         for (i <- 1 to n) {
           listaInterna = listaInterna :+ elm
         }
         listaRepetida = listaRepetida :+ listaInterna
       }
       return listaRepetida
-    }else{
+    } else {
       throw new IllegalArgumentException("n debe ser positivo")
     }
 
@@ -41,10 +41,27 @@ class EjercicioListas {
   def filtrarListas(criterioIn: String, n: Int, lista: List[Int]): List[Int] = {
     var criterio: String = criterioIn.toLowerCase()
     var listaFiltrada: List[Int] = List()
-    var funcion: Any = (x: Int, Y: Int) => x > Y
-    if (criterio == "mayor") {
-      funcion = (x: Int, Y: Int) => x > Y
-    }else if (criterio == "mayorigual") {
-      funcion = (x: Int, Y: Int) => x >= Y
+    var funcion = (x: Int, y: Int) => x > y
+    if(criterio=="menor"){
+      funcion = (x: Int, y: Int) => x < y
+    } else if(criterio=="mayoroigual"){
+      funcion = (x: Int, y: Int) => x >= y
+    } else if(criterio=="igual"){
+      funcion = (x: Int, y: Int) => x == y
+    } else if(criterio=="diferente"){
+      funcion = (x: Int, y: Int) => x != y
+    } else if(criterio=="menoroigual"){
+      funcion = (x: Int, y: Int) => x <= y
+    } else if(criterio=="mayor"){
+      funcion = (x: Int, y: Int) => x > y
+    } else {
+      throw new IllegalArgumentException("El criterio debe ser uno de los siguientes: mayor, menor, mayoroigual, igual, diferente o menoroigual")
+    }
+  for(elm <- lista){
+    if(funcion(elm, n)){
+      listaFiltrada = listaFiltrada :+ elm
     }
   }
+    return listaFiltrada
+  }
+}
